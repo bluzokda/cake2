@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кафе-кондитерская «Крем-Брюле» | Псков</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FDFBF7;
+      --card-bg: #FFFFFF;
+      --accent: #B85D3D;
+      --accent-hover: #9E4D31;
+      --gold: #D4A373;
+      --text: #2A2523;
+      --muted: #736B66;
+      --border: #EFE8DF;
+      --radius: 16px;
+      --shadow: 0 12px 32px rgba(184, 93, 61, 0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 70px;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Шапка */
+    header {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      font-size: 28px;
+      color: var(--accent);
+      text-decoration: none;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .brand span {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .header-contacts {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-phone {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .header-phone:hover { color: var(--accent); }
+
+    /* Баннер предоплаты */
+    .notice-bar {
+      background: #FFF4ED;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin: 20px 0;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #7A3D27;
+      font-weight: 500;
+    }
+
+    /* Главный экран */
+    .hero {
+      text-align: center;
+      padding: 40px 0 30px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #FAEDCD;
+      color: #6C584C;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .btn-main {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(184, 93, 61, 0.25);
+    }
+
+    .btn-main:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Популярные десерты */
+    .section-title {
+      font-size: 32px;
+      text-align: center;
+      margin: 50px 0 10px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .grid-catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-tag {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .product-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* Калькулятор-конфигуратор */
+    .calc-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    select, input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      background: #FAF7F2;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    select:focus, input:focus {
+      border-color: var(--accent);
+      background: #FFF;
+    }
+
+    .format-pills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .format-pill {
+      position: relative;
+    }
+
+    .format-pill input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .format-pill label {
+      display: block;
+      text-align: center;
+      padding: 14px 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      background: #FAF7F2;
+      margin: 0;
+      transition: all 0.2s;
+    }
+
+    .format-pill input:checked + label {
+      border-color: var(--accent);
+      background: #FDF1EB;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .decor-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .decor-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #FAF7F2;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .decor-item input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .total-box {
+      background: #FAF3EC;
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 28px 0 20px;
+    }
+
+    .total-title {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .total-sum {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-submit {
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-vk {
+      background: #0077FF;
+      color: #fff;
+    }
+
+    .btn-call {
+      background: #2A2523;
+      color: #fff;
+    }
+
+    .btn-submit:hover { opacity: 0.9; }
+
+    /* О кафе */
+    .story-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-top: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    .locations {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .loc-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .loc-item span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 650px) {
+      .hero h1 { font-size: 32px; }
+      .actions-grid { grid-template-columns: 1fr; }
+      .locations { grid-template-columns: 1fr; }
+      .calc-wrapper { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="#" class="brand">
+        Крем-Брюле
+        <span>Кафе-кондитерская • Псков</span>
+      </a>
+      <div class="header-contacts">
+        <a href="tel:+78112609030" class="header-phone">60-90-30</a>
+      </div>
+    </header>
+
+    <div class="notice-bar">
+      ✨ <strong>Внимание:</strong> Мы не берем предоплату! Оплата происходит строго при выдаче заказной продукции в кафе.
+    </div>
+
+    <!-- Главный блок -->
+    <section class="hero">
+      <span class="hero-badge">Свежая выпечка и торты на заказ</span>
+      <h1>Натуральные авторские десерты в самом сердце Пскова</h1>
+      <p>Торты к важным датам, нежные бенто и выпечка по бабушкиным рецептам. Соберите индивидуальный расчет за 1 минуту.</p>
+      <a href="#calculator" class="btn-main">Рассчитать свой торт</a>
+    </section>
+
+    <!-- Популярные позиции из маркета -->
+    <section>
+      <h2 class="section-title">Витрина кафе</h2>
+      <p class="section-desc">Популярные десерты, доступные к заказу</p>
+
+      <div class="grid-catalog">
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Хит продаж</div>
+            <div class="product-title">Бенто-торт</div>
+            <div class="product-meta">Идеальный сюрприз на 1-2 персоны с индивидуальной надписью.</div>
+          </div>
+          <div class="product-price">1 200 ₽</div>
+        </div>
+
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Десерт</div>
+            <div class="product-title">Муссовый торт «Три шоколада»</div>
+            <div class="product-meta">Шоколадный бисквит и три слоя нежнейшего мусса.</div>
+          </div>
+          <div class="product-price">2 400 ₽</div>
+        </div>
+
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Выпечка</div>
+            <div class="product-title">Меренговый рулет</div>
+            <div class="product-meta">Хрустящая меренга, сливочный крем и спелые ягоды.</div>
+          </div>
+          <div class="product-price">1 500 ₽</div>
+        </div>
+
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Сытная выпечка</div>
+            <div class="product-title">Пирог с вишней</div>
+            <div class="product-meta">0.5 кг домашнего ароматного пирога со сочной ягодой.</div>
+          </div>
+          <div class="product-price">450 ₽</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Калькулятор торта на заказ -->
+    <section id="calculator">
+      <h2 class="section-title">Конфигуратор торта на заказ</h2>
+      <p class="section-desc">Выберите параметры, чтобы мгновенно передать заказ кондитерам</p>
+
+      <div class="calc-wrapper">
+        <!-- Тип изделия -->
+        <div class="form-group">
+          <label>Формат десерта:</label>
+          <div class="format-pills">
+            <div class="format-pill">
+              <input type="radio" id="f_bento" name="cake_format" value="bento" checked onchange="calcTotal()">
+              <label for="f_bento">Бенто<br><strong>1 200 ₽</strong></label>
+            </div>
+            <div class="format-pill">
+              <input type="radio" id="f_classic" name="cake_format" value="classic" onchange="calcTotal()">
+              <label for="f_classic">Торт (от 1.5 кг)<br><strong>от 2 700 ₽</strong></label>
+            </div>
+            <div class="format-pill">
+              <input type="radio" id="f_mousse" name="cake_format" value="mousse" onchange="calcTotal()">
+              <label for="f_mousse">Муссовый торт<br><strong>2 400 ₽</strong></label>
+            </div>
+            <div class="format-pill">
+              <input type="radio" id="f_roll" name="cake_format" value="roll" onchange="calcTotal()">
+              <label for="f_roll">Меренговый рулет<br><strong>1 500 ₽</strong></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вес (только для классического) -->
+        <div class="form-group" id="weight_wrap" style="display: none;">
+          <label for="cake_weight">Вес торта:</label>
+          <select id="cake_weight" onchange="calcTotal()">
+            <option value="1.5">1.5 кг (~6–8 порций)</option>
+            <option value="2.0">2.0 кг (~10–12 порций)</option>
+            <option value="2.5">2.5 кг (~12–15 порций)</option>
+            <option value="3.0">3.0 кг (для банкета)</option>
+          </select>
+        </div>
+
+        <!-- Выбор бисквита -->
+        <div class="form-group" id="biscuit_wrap">
+          <label for="biscuit_select">Основа бисквита:</label>
+          <select id="biscuit_select">
+            <option value="Классический">Классический воздушный бисквит</option>
+            <option value="Насыщенно-шоколадный">Насыщенно-шоколадный</option>
+            <option value="Красный бархат">Бисквит «Красный бархат»</option>
+            <option value="Ванильный">Ванильный с натуральной ванилью</option>
+            <option value="Фисташковый">Фисташковый на натуральной пасте</option>
+            <option value="Морковный">Морковный с грецким орехом</option>
+            <option value="Лимонный">Лимонный с цедрой лимона и лайма</option>
+          </select>
+        </div>
+
+        <!-- Начинка -->
+        <div class="form-group" id="filling_wrap">
+          <label for="filling_select">Начинка:</label>
+          <select id="filling_select">
+            <option value="Клубника">Сочная клубника</option>
+            <option value="Малина">Спелая малина</option>
+            <option value="Вишня">Ароматная вишня</option>
+            <option value="Манго-маракуйя">Тропический манго-маракуйя</option>
+            <option value="Домашняя карамель">Карамель собственного приготовления</option>
+          </select>
+        </div>
+
+        <!-- Декор -->
+        <div class="form-group">
+          <label>Элементы декора:</label>
+          <div class="decor-checkboxes">
+            <label class="decor-item"><input type="checkbox" id="dec_berries" value="Свежие ягоды"> Свежие ягоды</label>
+            <label class="decor-item"><input type="checkbox" id="dec_cookies" value="Имбирные пряники"> Пряники</label>
+            <label class="decor-item"><input type="checkbox" id="dec_figs" value="Шоколадные фигурки"> Шоколадный декор</label>
+            <label class="decor-item"><input type="checkbox" id="dec_custom" value="Индивидуальная надпись"> Любая надпись</label>
+          </div>
+        </div>
+
+        <!-- Дата и примечания -->
+        <div class="form-group">
+          <label for="order_date">Желаемая дата получения:</label>
+          <input type="date" id="order_date">
+        </div>
+
+        <div class="form-group">
+          <label for="order_note">Текст надписи или пожелания:</label>
+          <input type="text" id="order_note" placeholder="Например: надпись «Любимому мужу», самовывоз на Поземского">
+        </div>
+
+        <!-- Итоговый блок -->
+        <div class="total-box">
+          <span class="total-title">Ориентировочная сумма:</span>
+          <span class="total-sum" id="total_price">1 200 ₽</span>
+        </div>
+
+        <!-- Кнопки действия -->
+        <div class="actions-grid">
+          <button class="btn-submit btn-vk" onclick="sendToVk()">
+            Отправить расчет в VK сообщества
+          </button>
+          <a href="tel:+78112609030" class="btn-submit btn-call">
+            Позвонить: 60-90-30
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- О нас и адреса -->
+    <section class="story-card">
+      <h2 style="font-size: 26px; margin-bottom: 12px; color: var(--text);">Современное кафе с исторической изюминкой</h2>
+      <p>Мы бережно восстановили потолок со старинной дранкой на столетних гвоздях и сохранили историческую кирпичную кладку вековой давности. В кондитерской мы не экономим на ингредиентах: готовим так, как готовят дома для самых близких.</p>
+      
+      <div class="locations">
+        <div class="loc-item">
+          <strong>ул. Леона Поземского, д. 9</strong>
+          <span>Недалеко от набережной Псковы • Ежедневно до 21:00</span>
+        </div>
+        <div class="loc-item">
+          <strong>ул. Кузбасской Дивизии, д. 19</strong>
+          <span>Второй филиал кондитерской</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const VK_COMMUNITY_ID = "141013342"; // ID сообщества Крем-Брюле
+
+    function calcTotal() {
+      const format = document.querySelector('input[name="cake_format"]:checked').value;
+      const weightWrap = document.getElementById('weight_wrap');
+      const biscuitWrap = document.getElementById('biscuit_wrap');
+      const fillingWrap = document.getElementById('filling_wrap');
+      const priceEl = document.getElementById('total_price');
+
+      let sum = 0;
+
+      if (format === 'bento') {
+        weightWrap.style.display = 'none';
+        biscuitWrap.style.display = 'block';
+        fillingWrap.style.display = 'block';
+        sum = 1200;
+      } else if (format === 'classic') {
+        weightWrap.style.display = 'block';
+        biscuitWrap.style.display = 'block';
+        fillingWrap.style.display = 'block';
+        const weight = parseFloat(document.getElementById('cake_weight').value);
+        sum = Math.round(weight * 1800);
+      } else if (format === 'mousse') {
+        weightWrap.style.display = 'none';
+        biscuitWrap.style.display = 'none';
+        fillingWrap.style.display = 'none';
+        sum = 2400;
+      } else if (format === 'roll') {
+        weightWrap.style.display = 'none';
+        biscuitWrap.style.display = 'none';
+        fillingWrap.style.display = 'none';
+        sum = 1500;
+      }
+
+      priceEl.innerText = sum.toLocaleString('ru-RU') + ' ₽';
+      return sum;
+    }
+
+    function generateOrderSummary() {
+      const formatMap = {
+        bento: 'Бенто-торт (1 200 ₽)',
+        classic: `Классический торт (${document.getElementById('cake_weight').value} кг)`,
+        mousse: 'Муссовый торт «Три шоколада» (2 400 ₽)',
+        roll: 'Меренговый рулет (1 500 ₽)'
+      };
+
+      const formatKey = document.querySelector('input[name="cake_format"]:checked').value;
+      const formatName = formatMap[formatKey];
+      const biscuit = (formatKey === 'bento' || formatKey === 'classic') ? document.getElementById('biscuit_select').value : 'Стандарт';
+      const filling = (formatKey === 'bento' || formatKey === 'classic') ? document.getElementById('filling_select').value : 'Фирменная';
+      const date = document.getElementById('order_date').value || 'Не указана';
+      const note = document.getElementById('order_note').value.trim() || 'Без надписи';
+      const total = document.getElementById('total_price').innerText;
+
+      // Сбор выбранного декора
+      const decors = [];
+      ['dec_berries', 'dec_cookies', 'dec_figs', 'dec_custom'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el.checked) decors.push(el.value);
+      });
+      const decorStr = decors.length > 0 ? decors.join(', ') : 'Без доп. декора';
+
+      return `Здравствуйте! Собрал заказ через калькулятор:\n\n` +
+             `• Изделие: ${formatName}\n` +
+             `• Бисквит: ${biscuit}\n` +
+             `• Начинка: ${filling}\n` +
+             `• Декор: ${decorStr}\n` +
+             `• Дата получения: ${date}\n` +
+             `• Пожелания/надпись: ${note}\n` +
+             `• Расчет: ${total}\n\n` +
+             `Подскажите, можно ли оформить заказ?`;
+    }
+
+    function sendToVk() {
+      const msg = encodeURIComponent(generateOrderSummary());
+      // Открывает диалог сообщества ВКонтакте с предзаполненным текстом
+      window.open(`https://vk.me/public${VK_COMMUNITY_ID}?text=${msg}`, '_blank');
+    }
+
+    // Установка даты по умолчанию (через 2 дня)
+    const defDate = new Date();
+    defDate.setDate(defDate.getDate() + 2);
+    document.getElementById('order_date').value = defDate.toISOString().split('T')[0];
+  </script>
+</body>
+</html>
